@@ -1,0 +1,24 @@
+### GET ALL BLOGS
+GET http://localhost:3000/api/blogs
+
+### CREATE A NEW VALID BLOG
+POST http://localhost:3000/api/blogs
+Content-Type: application/json
+
+{
+  "author": "new author",
+  "url": "example.com",
+  "title": "testing post request"
+}
+
+### CREATE A NEW INVALID BLOG
+POST http://localhost:3000/api/blogs
+Content-Type: application/json
+
+{
+  "author": "new author",
+  "url": "example.com"
+}
+
+### DELETE A BLOG BY ID
+DELETE http://localhost:3000/api/blogs/5
