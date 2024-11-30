@@ -25,3 +25,30 @@ PATCH http://localhost:3000/api/blogs/1
 
 ### DELETE A BLOG BY ID
 DELETE http://localhost:3000/api/blogs/7
+
+### GET ALL USERS
+GET http://localhost:3000/api/users
+
+### CREATE A USER
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+  "name": "another",
+  "username": "another13413",
+  "password": "12345"
+}
+
+# {
+#   "name": "testUser",
+#   "username": "test",
+#   "password": "12345"
+# }
+
+### CHANGE USERNAME
+PUT http://localhost:3000/api/users/another13413
+Content-Type: application/json
+
+{
+  "username": "another12"
+}
