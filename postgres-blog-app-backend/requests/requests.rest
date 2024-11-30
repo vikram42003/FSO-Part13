@@ -21,4 +21,4 @@ Content-Type: application/json
 }
 
 ### DELETE A BLOG BY ID
-DELETE http://localhost:3000/api/blogs/5
+DELETE http://localhost:3000/api/blogs/7
