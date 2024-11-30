@@ -20,5 +20,8 @@ Content-Type: application/json
   "url": "example.com"
 }
 
+### UPDATE LIKES BY ID
+PATCH http://localhost:3000/api/blogs/1
+
 ### DELETE A BLOG BY ID
 DELETE http://localhost:3000/api/blogs/7

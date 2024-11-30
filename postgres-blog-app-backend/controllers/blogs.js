@@ -19,6 +19,21 @@ blogRouter.post("/", async (req, res) => {
   }
 });
 
+blogRouter.patch("/:id", async (req, res) => {
+  try {
+    const blog = await Blog.findByPk(req.params.id);
+    if (!blog) throw new Error("Invalid id");
+    blog.likes += 1;
+    await blog.save();
+    res.json(blog);
+  } catch (error) {
+    console.log(error);
+    if (error.message) {
+      res.status(400).json({ error: error.message });
+    }
+  }
+});
+
 blogRouter.delete("/:id", async (req, res) => {
   try {
     const wasItDeleted = await Blog.destroy({
