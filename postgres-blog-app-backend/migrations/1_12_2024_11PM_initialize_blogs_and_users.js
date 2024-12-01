@@ -26,9 +26,12 @@ module.exports = {
           type: DataTypes.TEXT,
           allowNull: false,
         },
+        created_at: DataTypes.DATE,
+        updated_at: DataTypes.DATE,
       },
       {
         underscored: true,
+        timestamps: true,
       },
     );
     await queryInterface.createTable(
@@ -62,9 +65,12 @@ module.exports = {
           },
           allowNull: false,
         },
+        created_at: DataTypes.DATE,
+        updated_at: DataTypes.DATE,
       },
       {
         underscored: true,
+        timestamps: true,
       },
     );
   },

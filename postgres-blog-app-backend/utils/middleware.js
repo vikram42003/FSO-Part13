@@ -1,6 +1,8 @@
 const jwt = require("jsonwebtoken");
 const { User } = require("../models");
 
+// P.S. I know the error handling is absolutely abyssmal but this is a project for
+// learning how to work with postgres so my main focus was the rest of the backend
 const errorHandler = (error, req, res, next) => {
   if (process.env.NODE_ENV != "production") {
     console.log(error);

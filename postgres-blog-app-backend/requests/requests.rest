@@ -4,12 +4,13 @@ GET http://localhost:3000/api/blogs
 ### CREATE A NEW VALID BLOG
 POST http://localhost:3000/api/blogs
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpZCI6MSwiaWF0IjoxNzMzMDM3MTAzfQ.Avh7cZJcFVfw0EUuM4i633Vq01WLngXZyM-GNiST2H4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RAdGVzdC5jb20iLCJpZCI6MSwiaWF0IjoxNzMzMDc2ODI0fQ.l87dwM08o87rk9pfYXEelKv4HClfntrLVUlEPt_hP0w
 
 {
   "author": "new author",
   "url": "example.com",
-  "title": "testing post request"
+  "title": "testing post request",
+  "year": 2020
 }
 
 ### CREATE A NEW INVALID BLOG
@@ -35,17 +36,17 @@ GET http://localhost:3000/api/users
 POST http://localhost:3000/api/users
 Content-Type: application/json
 
-{
-  "name": "another",
-  "username": "another@one.com",
-  "password": "12345"
-}
-
 # {
-#   "name": "testUser",
-#   "username": "test",
+#   "name": "another",
+#   "username": "another@one.com",
 #   "password": "12345"
 # }
+
+{
+  "name": "testUser",
+  "username": "test@test.com",
+  "password": "12345"
+}
 
 ### CHANGE USERNAME
 PUT http://localhost:3000/api/users/another13413
@@ -60,7 +61,7 @@ POST http://localhost:3000/api/login
 Content-Type: application/json
 
 {
-  "username": "test",
+  "username": "test@test.com",
   "password": "12345"
 }
 

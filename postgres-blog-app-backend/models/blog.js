@@ -24,7 +24,7 @@ const Blog = sequelize.define(
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
-    user_id: {
+    userId: {
       type: DataTypes.INTEGER,
       references: {
         model: "users",
@@ -32,10 +32,18 @@ const Blog = sequelize.define(
       },
       allowNull: false,
     },
+    year: {
+      type: DataTypes.INTEGER,
+      validate: {
+        min: 1991,
+        max: new Date().getFullYear(),
+      },
+      allowNull: false,
+    },
   },
   {
     underscored: true,
-    timestamps: false,
+    timestamps: true,
   },
 );
 
