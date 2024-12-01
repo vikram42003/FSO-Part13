@@ -1,5 +1,5 @@
 ### GET ALL BLOGS
-GET http://localhost:3000/api/blogs?search=hill
+GET http://localhost:3000/api/blogs
 
 ### CREATE A NEW VALID BLOG
 POST http://localhost:3000/api/blogs
@@ -22,7 +22,7 @@ Content-Type: application/json
 }
 
 ### UPDATE LIKES BY ID
-PATCH http://localhost:3000/api/blogs/8
+PATCH http://localhost:3000/api/blogs/6
 
 ### DELETE A BLOG BY ID
 DELETE http://localhost:3000/api/blogs/8
