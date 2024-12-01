@@ -24,6 +24,14 @@ const Blog = sequelize.define(
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "users",
+        key: "id",
+      },
+      allowNull: false,
+    },
   },
   {
     underscored: true,
