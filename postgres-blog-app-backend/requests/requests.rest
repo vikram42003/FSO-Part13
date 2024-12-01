@@ -1,5 +1,5 @@
 ### GET ALL BLOGS
-GET http://localhost:3000/api/blogs
+GET http://localhost:3000/api/blogs?search=hill
 
 ### CREATE A NEW VALID BLOG
 POST http://localhost:3000/api/blogs
