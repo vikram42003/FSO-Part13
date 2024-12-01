@@ -1,3 +1,6 @@
+const jwt = require("jsonwebtoken");
+const { User } = require("../models");
+
 const errorHandler = (error, req, res, next) => {
   if (process.env.NODE_ENV != "production") {
     console.log(error);
@@ -12,6 +15,25 @@ const errorHandler = (error, req, res, next) => {
   next(error);
 };
 
+const extractUser = async (req, res, next) => {
+  const authHeader = req.header("Authorization");
+  if (!authHeader || !authHeader.toLowerCase().startsWith("bearer ")) {
+    throw new Error("authentication token is invalid or missing");
+  }
+
+  console.log(authHeader.substring(7));
+  const decodedToken = jwt.verify(authHeader.substring(7), process.env.SECRET);
+
+  const user = await User.findByPk(decodedToken.id);
+  if (!user) {
+    throw new Error(`user does not exist on the server`);
+  }
+
+  req.user = user;
+  next();
+};
+
 module.exports = {
   errorHandler,
+  extractUser,
 };

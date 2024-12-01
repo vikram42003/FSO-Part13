@@ -4,6 +4,7 @@ GET http://localhost:3000/api/blogs
 ### CREATE A NEW VALID BLOG
 POST http://localhost:3000/api/blogs
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpZCI6MSwiaWF0IjoxNzMzMDM3MTAzfQ.Avh7cZJcFVfw0EUuM4i633Vq01WLngXZyM-GNiST2H4
 
 {
   "author": "new author",
@@ -21,10 +22,11 @@ Content-Type: application/json
 }
 
 ### UPDATE LIKES BY ID
-PATCH http://localhost:3000/api/blogs/1
+PATCH http://localhost:3000/api/blogs/8
 
 ### DELETE A BLOG BY ID
-DELETE http://localhost:3000/api/blogs/7
+DELETE http://localhost:3000/api/blogs/8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpZCI6MSwiaWF0IjoxNzMzMDM3MTAzfQ.Avh7cZJcFVfw0EUuM4i633Vq01WLngXZyM-GNiST2H4
 
 ### GET ALL USERS
 GET http://localhost:3000/api/users
@@ -51,4 +53,13 @@ Content-Type: application/json
 
 {
   "username": "another12"
+}
+
+### LOGIN
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "12345"
 }

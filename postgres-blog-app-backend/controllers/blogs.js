@@ -1,16 +1,24 @@
 const { Router } = require("express");
 
-const { Blog } = require("../models");
+const { Blog, User } = require("../models");
+
+const { extractUser } = require("../utils/middleware");
 
 const blogRouter = Router();
 
 blogRouter.get("/", async (req, res) => {
-  const blogs = await Blog.findAll();
+  const blogs = await Blog.findAll({
+    attributes: { exclude: ["userId"] },
+    include: {
+      model: User,
+      attributes: ["name"],
+    },
+  });
   res.json(blogs);
 });
 
-blogRouter.post("/", async (req, res) => {
-  const blog = await Blog.create(req.body);
+blogRouter.post("/", extractUser, async (req, res) => {
+  const blog = await Blog.create({ ...req.body, userId: req.user.id });
   res.json(blog);
 });
 
@@ -22,13 +30,17 @@ blogRouter.patch("/:id", async (req, res) => {
   res.json(blog);
 });
 
-blogRouter.delete("/:id", async (req, res) => {
-  const wasItDeleted = await Blog.destroy({
-    where: {
-      id: req.params.id,
-    },
-  });
-  if (wasItDeleted === 0) throw new Error("Invalid id");
+blogRouter.delete("/:id", extractUser, async (req, res) => {
+  const blog = await Blog.findByPk(req.params.id);
+  if (!blog) {
+    throw new Error(`blog with id '${req.params.id}' was not found`);
+  }
+
+  if (blog.userId != req.user.id) {
+    throw new Error("a blog can only be deleted by its creator and you are not the creator");
+  }
+
+  await blog.destroy();
   res.sendStatus(200);
 });
 
