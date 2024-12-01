@@ -22,7 +22,7 @@ Content-Type: application/json
 }
 
 ### UPDATE LIKES BY ID
-PATCH http://localhost:3000/api/blogs/6
+PATCH http://localhost:3000/api/blogs/1
 
 ### DELETE A BLOG BY ID
 DELETE http://localhost:3000/api/blogs/8
@@ -63,3 +63,6 @@ Content-Type: application/json
   "username": "test",
   "password": "12345"
 }
+
+### GET AUTHOR DATA
+GET http://localhost:3000/api/authors
