@@ -23,7 +23,6 @@ const extractUser = async (req, res, next) => {
     throw new Error("authentication token is invalid or missing");
   }
 
-  console.log(authHeader.substring(7));
   const decodedToken = jwt.verify(authHeader.substring(7), process.env.SECRET);
 
   const user = await User.findByPk(decodedToken.id);
