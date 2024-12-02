@@ -79,3 +79,12 @@ Content-Type: application/json
   "userId": 1,
   "blogId": 1
 }
+
+### MODIFY READING PROPERTY OF READING LIST
+PUT http://localhost:3000/api/readinglists/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RAdGVzdC5jb20iLCJpZCI6MSwiaWF0IjoxNzMzMTI0NTQ2fQ.aYpl6ZsGt9CL0AU5L1zz7eMxOLCE7clydoXIkxnfDP0
+
+{
+  "read": true
+}
