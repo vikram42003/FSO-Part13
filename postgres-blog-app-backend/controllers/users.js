@@ -1,7 +1,8 @@
 const { Router } = require("express");
+const { Op } = require("sequelize");
 const bcrypt = require("bcrypt");
 
-const { User, Blog, ReadingList } = require("../models");
+const { User, Blog } = require("../models");
 
 const userRouter = Router();
 
@@ -26,6 +27,9 @@ userRouter.get("/:id", async (req, res) => {
         as: "reading",
         through: {
           attributes: ["id", "reading"],
+          where: {
+            reading: req.query.read ? req.query.read : { [Op.or]: [true, false] },
+          },
         },
       },
     ],
