@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { User } = require("../models");
+const { User, Session } = require("../models");
 
 // P.S. I know the error handling is absolutely abyssmal but this is a project for
 // learning how to work with postgres so my main focus was the rest of the backend
@@ -28,6 +28,11 @@ const extractUser = async (req, res, next) => {
   const user = await User.findByPk(decodedToken.id);
   if (!user) {
     throw new Error(`user does not exist on the server`);
+  }
+
+  const session = await Session.findOne({ where: { userId: user.id } });
+  if (!session) {
+    throw new Error("your session has expired. please login again")
   }
 
   req.user = user;

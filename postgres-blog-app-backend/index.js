@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.use("/api/blogs", blogRouter);
 app.use("/api/users", userRouter);
-app.use("/api/login", loginRouter);
+app.use("/api/", loginRouter);
 app.use("/api/authors", authorRouter);
 app.use("/api/readinglists", readingListsRouter);
 
