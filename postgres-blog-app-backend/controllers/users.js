@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const bcrypt = require("bcrypt");
 
-const { User, Blog } = require("../models");
+const { User, Blog, ReadingList } = require("../models");
 
 const userRouter = Router();
 
@@ -14,6 +14,23 @@ userRouter.get("/", async (req, res) => {
     },
   });
   res.json(users);
+});
+
+userRouter.get("/:id", async (req, res) => {
+  const user = await User.findByPk(req.params.id, {
+    attributes: { exclude: ["password"] },
+    include: [
+      { model: Blog },
+      {
+        model: Blog,
+        as: "reading",
+        through: {
+          attributes: ["id", "reading"],
+        },
+      },
+    ],
+  });
+  res.json(user);
 });
 
 userRouter.post("/", async (req, res) => {
